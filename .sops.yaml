@@ -6,6 +6,6 @@ creation_rules:
     key_groups:
       - age:
         - *apq-pc
-      - pgp:
+        pgp:
         - *mmit
 
