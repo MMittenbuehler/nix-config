@@ -5,10 +5,10 @@
 { inputs, lib, config, pkgs, ... }:
 
 {
-  imports =
-    [ # Include the results of the hardware scan.
-      ./hardware-configuration.nix
-    ];
+  imports = [
+    inputs.home-manager.nixosModules.home-manager
+    ./sops.nix
+  ];
 
   nix = let
     flakeInputs = lib.filterAttrs (_: lib.isType "flake") inputs;
@@ -28,7 +28,7 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
-  networking.hostName = "mmit-121-pc"; # Define your hostname.
+  networking.hostName = "apq-121-mmit"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
   # Configure network proxy if necessary
@@ -93,18 +93,6 @@
 
   # Enable touchpad support (enabled default in most desktopManager).
   # services.xserver.libinput.enable = true;
-
-  # Define a user account. Don't forget to set a password with ‘passwd’.
-  users.users.mmittenbuehler = {
-    isNormalUser = true;
-    description = "Marcel Mittenbuehler";
-    extraGroups = [ "networkmanager" "wheel" ];
-    packages = with pkgs; [
-      thunderbird
-      discord
-      spotify
-    ];
-  };
 
   # Install firefox.
   programs.firefox.enable = true;

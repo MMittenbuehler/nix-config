@@ -15,15 +15,15 @@
   };
 
   home = {
-    username = "mmittenbuehler";
-    homeDirectory = "/home/mmittenbuehler";
-  }
+    username = "marcel";
+    homeDirectory = "/home/marcel";
+    stateVersion = "24.05";
+  };
 
   programs.home-manager.enable = true;
   programs.git.enable = true;
 
   systemd.user.startServices = "sd-switch";
 
-  home.stateVersion = "24.05";
 }
 

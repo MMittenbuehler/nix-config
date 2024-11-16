@@ -8,6 +8,12 @@
       url = "github:nix-community/home-manager/release-24.05";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    sops-nix = {
+      url = "github:mic92/sops-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.nixpkgs-stable.follows = "nixpkgs";
+    };
   };
 
   outputs = { self, nixpkgs, home-manager, systems, ... }@inputs: let
@@ -23,18 +29,18 @@
   in {
     inherit lib;
 
-    nixosConfigurations.apq-personal = lib.nixosSystem {
+    nixosConfigurations.apq-121-mmit = lib.nixosSystem {
       specialArgs = {inherit inputs outputs;};
       modules = [
-        ./hosts/apq-personal
+        ./hosts/apq-121-mmit
       ];
     };
 
     homeConfigurations = {
-      "mmittenbuehler@mmit-121-pc" = home-manager.lib.homeManagerConfiguration {
+      "marcel@apq-121-mmit" = home-manager.lib.homeManagerConfiguration {
         pkgs = pkgsFor.x86_64-linux;
-	extraSpecialArgs = {inherit inputs outputs;};
-	modules = [./home-manager/home.nix];
+	      extraSpecialArgs = {inherit inputs outputs;};
+	      modules = [./home/marcel/apq-121-mmit.nix];
       };
     };
   };
