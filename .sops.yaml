@@ -1,11 +1,10 @@
 keys:
   - &mmit FECD0B179B7700732C2A989126727003542EA506
-  - &apq-pc age1pg9ahaqy2vpdfh9ltxw3h27juamcszmul65wjvfq3tnk9n308vcqnwl4xa
+  - &apq-pc age1nk6m3d4jrcxqa9e5k4w69vvama0a3xmz3hvckfd9vyu633j9254qw7jlkp
 creation_rules:
   - path_regex: hosts/common/secrets.yaml
     key_groups:
       - age:
         - *apq-pc
-        pgp:
-        - *mmit
+
 
