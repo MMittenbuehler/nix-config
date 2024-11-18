@@ -21,7 +21,12 @@
   };
 
   programs.home-manager.enable = true;
-  programs.git.enable = true;
+
+  programs.git = {
+    enable = true;
+    userEmail = "marcel@mittenbuehler.com";
+    userName = "MMittenbuehler";
+  };
 
   systemd.user.startServices = "sd-switch";
 
