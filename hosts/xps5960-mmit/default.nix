@@ -13,5 +13,5 @@
       ../common/users/marcel
     ];
 
-  networking.hostName = "apq-121-mmit";
+  networking.hostName = "xps5960-mmit";
 }

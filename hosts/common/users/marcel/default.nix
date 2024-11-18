@@ -6,10 +6,10 @@
 }: let
   ifTheyExist = groups: builtins.filter (group: builtins.hasAttr group config.users.groups) groups;
 in {
-  users.mutableUsers = false;
+  # users.mutableUsers = false;
   users.users.marcel = {
     isNormalUser = true;
-    shell = pkgs.bash;
+    description = "Marcel Mittenbuehler";
     extraGroups = ifTheyExist [
       "audio"
       "deluge"
@@ -26,10 +26,11 @@ in {
       "video"
       "wheel"
       "wireshark"
+      "networkmanager"
     ];
 
     openssh.authorizedKeys.keys = lib.splitString "\n" (builtins.readFile ../../../../home/marcel/ssh.pub);
-    hashedPasswordFile = config.sops.secrets.marcel-passwd.path;
+    # hashedPasswordFile = config.sops.secrets.marcel-passwd.path;
     packages = [pkgs.home-manager];
   };
 

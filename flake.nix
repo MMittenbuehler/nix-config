@@ -29,11 +29,20 @@
   in {
     inherit lib;
 
-    nixosConfigurations.apq-121-mmit = lib.nixosSystem {
-      specialArgs = {inherit inputs outputs;};
-      modules = [
-        ./hosts/apq-121-mmit
-      ];
+    nixosConfigurations = {
+      apq-121-mmit = lib.nixosSystem {
+        specialArgs = {inherit inputs outputs;};
+        modules = [
+          ./hosts/apq-121-mmit
+        ];
+      };
+
+      xps5960-mmit = lib.nixosSystem {
+        specialArgs = {inherit inputs outputs;};
+        modules = [
+          ./hosts/xps5960-mmit
+        ];
+      };
     };
 
     homeConfigurations = {
@@ -41,6 +50,11 @@
         pkgs = pkgsFor.x86_64-linux;
 	      extraSpecialArgs = {inherit inputs outputs;};
 	      modules = [./home/marcel/apq-121-mmit.nix];
+      };
+      "marcel@xps5960-mmit" = home-manager.lib.homeManagerConfiguration {
+        pkgs = pkgsFor.x86_64-linux;
+	      extraSpecialArgs = {inherit inputs outputs;};
+	      modules = [./home/marcel/xps5960-mmit.nix];
       };
     };
   };
