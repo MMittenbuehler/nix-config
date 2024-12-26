@@ -85,61 +85,58 @@
 #   # Enable touchpad support (enabled default in most desktopManager).
 #   # services.xserver.libinput.enable = true;
 
-#   # Install firefox.
-#   programs.firefox.enable = true;
-
-#   # Allow unfree packages
-#   nixpkgs.config.allowUnfree = true;
-#   nixpkgs.config.segger-jlink.acceptLicense = true;
-#   nixpkgs.config.permittedInsecurePackages = [
-#                 "segger-jlink-qt4-796s"
-#               ];
+  # Allow unfree packages
+  nixpkgs.config.allowUnfree = true;
+  nixpkgs.config.segger-jlink.acceptLicense = true;
+  nixpkgs.config.permittedInsecurePackages = [
+                "segger-jlink-qt4-796s"
+              ];
 
 
-#   nixpkgs.config.permittedInsecurePackages = [
-#     "electron-27.3.11" # required by logseq
-#   ];
+  nixpkgs.config.permittedInsecurePackages = [
+    "electron-27.3.11" # required by logseq
+  ];
 
-#   # List packages installed in system profile. To search, run:
-#   # $ nix search wget
-#   environment.systemPackages = with pkgs; [
-#     neovim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
-#     freecad-wayland
-#     wget
-#     nextcloud-client
-#     thunderbird
-#     vscode
-#     jetbrains.clion
-#     kicad
-#     brave
-#     firefox
-#     discord
-#     kitty
-#     keepassxc
-#     tigervnc
-#     git
-#     zoom-us
-#     gnomeExtensions.nextcloud-folder
-#     epson-escpr
-#     epson-escpr2
-#     libreoffice
-#     sshfs
-#     qt5.qtwayland
-#     logseq
-#     discord
-#     freecad
-#     platformio
-#     python310
-#     nrf-command-line-tools
-#     nrfutil
-#     nrfconnect
-#     usbutils
-#     segger-jlink
-#   ];
+  # List packages installed in system profile. To search, run:
+  # $ nix search wget
+  environment.systemPackages = with pkgs; [
+    neovim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
+    freecad-wayland
+    wget
+    nextcloud-client
+    thunderbird
+    vscode
+    jetbrains.clion
+    kicad
+    brave
+    firefox
+    discord
+    kitty
+    keepassxc
+    tigervnc
+    git
+    zoom-us
+    gnomeExtensions.nextcloud-folder
+    epson-escpr
+    epson-escpr2
+    libreoffice
+    sshfs
+    qt5.qtwayland
+    logseq
+    discord
+    freecad
+    platformio
+    python310
+    nrf-command-line-tools
+    nrfutil
+    nrfconnect
+    usbutils
+    segger-jlink
+  ];
 
-#   programs.bash.shellAliases = {
-#     vim = "nvim";
-#   };
+  programs.bash.shellAliases = {
+    vim = "nvim";
+  };
 
 #   #environment.sessionVariables.QT_QPA_PLATFORM = "wayland";
 
