@@ -73,6 +73,12 @@
 
   # Enable CUPS to print documents.
   services.printing.enable = true;
+  services.printing.drivers = [
+    pkgs.epson-escpr
+    pkgs.epson-escpr2
+  ];
+
+  services.avahi = { enable = true; nssmdns4 = true; };
 
   # Enable sound with pipewire.
   hardware.pulseaudio.enable = false;
@@ -99,12 +105,17 @@
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
+  nixpkgs.config.permittedInsecurePackages = [
+    "electron-27.3.11" # required by logseq
+  ];
+
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
     neovim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
     wget
     nextcloud-client
+    thunderbird
     vscode
     jetbrains.clion
     kicad
@@ -115,11 +126,26 @@
     tigervnc
     git
     zoom-us
+    nextcloud-client
+    gnomeExtensions.nextcloud-folder
+    epson-escpr
+    epson-escpr2
+    libreoffice
+    sshfs
+    qt5.qtwayland
+    logseq
+    discord
+    freecad
+    platformio
+    python310
   ];
 
   programs.bash.shellAliases = {
     vim = "nvim";
   };
+
+  #environment.sessionVariables.QT_QPA_PLATFORM = "wayland";
+
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
@@ -157,6 +183,5 @@
   # this value at the release version of the first install of this system.
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
-  system.stateVersion = "24.05"; # Did you read the comment?
-
+  system.stateVersion = "unstable"; # Did you read the comment?
 }
