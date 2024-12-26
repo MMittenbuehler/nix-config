@@ -12,7 +12,7 @@
     ./openssh.nix
     ./sops.nix
     ./systemd-boot.nix
-    ./systemd-initrd.nix
+    # ./systemd-initrd.nix
     ./upower.nix
   ]; # ++ (builtins.attrValues outputs.nixosModules);
 
@@ -39,7 +39,7 @@
 #   # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
 
 #   # Enable networking
-#   networking.networkmanager.enable = true;
+    networking.networkmanager.enable = true;
 
 #   # Enable the X11 windowing system.
 #   services.xserver.enable = true;

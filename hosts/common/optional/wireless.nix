@@ -14,7 +14,7 @@
 
   networking.wireless = {
     enable = true;
-    fallbackToWPA2 = false;
+    # fallbackToWPA2 = false;
     # # Declarative
     # secretsFile = config.sops.secrets.wireless.path;
     # networks = {
