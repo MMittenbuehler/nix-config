@@ -5,7 +5,9 @@
   pkgs,
   ...
 }: {
-  imports = [];
+  imports = [
+    ../features/cli
+  ];
 
   nixpkgs = {
     config = {
