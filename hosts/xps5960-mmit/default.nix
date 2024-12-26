@@ -7,12 +7,19 @@
 {
   imports =
     [ # Include the results of the hardware scan.
+      inputs.hardware.nixosModules.common-cpu-intel
+      inputs.hardware.nixosModules.common-gpu-nvidia
+      inputs.hardware.nixosModules.common-pc-ssd      
+
       ./hardware-configuration.nix
 
       ../common/global
       ../common/users/marcel
 
+      ../common/optinoal/pipewire.nix
       ../common/optional/tlp.nix
+      ../common/optional/wireless.nix
+      ../common/optional/gnome.nix
     ];
 
   networking.hostName = "xps5960-mmit";
@@ -31,4 +38,5 @@
     lidSwitchExternalPower = "lock";
   };
 
+  hardware.graphics.enable = true;
 }
