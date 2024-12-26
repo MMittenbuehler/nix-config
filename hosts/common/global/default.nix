@@ -2,7 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ inputs, outputs, ... }:
+{ pkgs, inputs, outputs, ... }:
 {
   imports = [
     inputs.home-manager.nixosModules.home-manager
@@ -14,7 +14,7 @@
     ./systemd-boot.nix
     ./systemd-initrd.nix
     ./upower.nix
-  ] ++ (builtins.attrValues outputs.nixosModules);
+  ]; # ++ (builtins.attrValues outputs.nixosModules);
 
   home-manager.useGlobalPkgs = true;
   home-manager.extraSpecialArgs = {
@@ -22,7 +22,7 @@
   };
 
   nixpkgs = {
-    overlays = builtins.attrValues outputs.overlays;
+    # overlays = builtins.attrValues outputs.overlays;
     config = {
       allowUnfree = true;
     };
@@ -86,14 +86,9 @@
 #   # services.xserver.libinput.enable = true;
 
   # Allow unfree packages
-  nixpkgs.config.allowUnfree = true;
   nixpkgs.config.segger-jlink.acceptLicense = true;
   nixpkgs.config.permittedInsecurePackages = [
                 "segger-jlink-qt4-796s"
-              ];
-
-
-  nixpkgs.config.permittedInsecurePackages = [
     "electron-27.3.11" # required by logseq
   ];
 
