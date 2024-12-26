@@ -4,11 +4,11 @@
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
 
+    hardware.url = "github:nixos/nixos-hardware";
     home-manager = {
       url = "github:nix-community/home-manager/master";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
     sops-nix = {
       url = "github:mic92/sops-nix";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -32,16 +32,12 @@
     nixosConfigurations = {
       apq-121-mmit = lib.nixosSystem {
         specialArgs = {inherit inputs outputs;};
-        modules = [
-          ./hosts/apq-121-mmit
-        ];
+        modules = [./hosts/apq-121-mmit];
       };
 
       xps5960-mmit = lib.nixosSystem {
         specialArgs = {inherit inputs outputs;};
-        modules = [
-          ./hosts/xps5960-mmit
-        ];
+        modules = [./hosts/xps5960-mmit];
       };
     };
 
